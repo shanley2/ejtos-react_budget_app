@@ -11,8 +11,16 @@ const AllocationForm = (props) => {
 
     const submitEvent = () => {
 
+        // Checks that cost does not exceed remaining funds
         if(cost > remaining) {
             alert("The value cannot exceed remaining funds  £"+remaining);
+            setCost("");
+            return;
+        }
+
+        //Checks that number entered is positive
+        if (cost < 1) {
+            alert("The value must be positive");
             setCost("");
             return;
         }
@@ -24,6 +32,7 @@ const AllocationForm = (props) => {
             cost: parseInt(cost),
         };
 
+        // Checks that value entered is a number
         if (isNaN(expense.cost)) {
             alert("The value entered must be a number");
             setCost("");
